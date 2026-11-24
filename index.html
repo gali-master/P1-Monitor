@@ -1,9 +1,158 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>P1 Monitor – live demo</title>
-<meta http-equiv="refresh" content="0; url=p1monitor.html?demo&amp;at=11">
-<meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="background:#111;color:#ddd;font:16px system-ui,sans-serif;text-align:center;padding-top:20vh">
-<p>Starting the P1 Monitor demo… / A P1 Monitor demó indul…</p>
-<p><a style="color:#ffb347" href="p1monitor.html?demo&amp;at=11">p1monitor.html?demo</a></p>
-<!-- GitHub Pages entry: the page runs with simulated data (no server needed). -->
-</body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P1 Monitor – live smart-meter display</title>
+<meta name="description" content="Local live web display for a smart electricity meter (GreenHESS ADA P1) with Fronius inverters. Nine skins, synthesized sound, demo mode, English/Hungarian.">
+<meta property="og:title" content="P1 Monitor">
+<meta property="og:description" content="Live smart-meter display with nine hand-made skins – try the demo in your browser.">
+<meta property="og:image" content="docs/nixie.jpg">
+<style>
+:root{--bg:#0d0907;--card:#17110d;--line:#3a2a1c;--amber:#ffb347;--amber2:#ff8a2a;--txt:#efe4d6;--mut:#b8a58f;--grn:#5be08a}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{background:radial-gradient(1200px 600px at 50% -200px,#3a2210 0,transparent 70%),var(--bg)}
+a{color:var(--amber)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{padding:28px 0 8px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
+.brand h1{margin:0;font:700 clamp(30px,5vw,46px)/1.05 Georgia,"Times New Roman",serif;letter-spacing:.02em;color:var(--amber);text-shadow:0 0 18px rgba(255,140,40,.55)}
+.brand p{margin:6px 0 0;color:var(--mut);max-width:640px}
+.lang{display:flex;gap:6px}
+.lang button{background:transparent;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;font:600 13px system-ui}
+.lang button.on{color:#1a0f06;background:var(--amber);border-color:var(--amber)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:650;border:1px solid var(--line);color:var(--txt);background:var(--card)}
+.btn.main{background:linear-gradient(180deg,#ffc266,#ff9a2e);color:#1a0f06;border-color:#ffb347}
+.btn.spon{color:#ff8fb3;border-color:#5a2a3a}
+.btn:hover{filter:brightness(1.12)}
+.demo{background:#000;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,170,80,.08)}
+.demo iframe{display:block;width:100%;aspect-ratio:16/10;border:0;background:#000}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;background:#120c08;border-top:1px solid var(--line)}
+.bar .lbl{color:var(--mut);font-size:13px;margin-right:4px}
+.chip{background:transparent;border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:5px 12px;font:600 13px system-ui;cursor:pointer}
+.chip.on{background:var(--amber);color:#1a0f06;border-color:var(--amber)}
+.bar .sp{flex:1}
+.bar a{font-size:13px}
+.hint{color:var(--mut);font-size:13px;margin:8px 2px 0}
+section{margin:42px 0}
+h2{font:700 24px Georgia,serif;color:var(--amber);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card b{color:var(--amber)}
+.card p{margin:6px 0 0;color:var(--mut);font-size:15px}
+ul.req{margin:0;padding-left:20px}
+ul.req li{margin:6px 0}
+pre{background:#0a0705;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;font:14px/1.5 ui-monospace,Consolas,monospace;color:#ffd7a0}
+.warn{border-left:3px solid var(--amber2);background:#1c120a;padding:10px 14px;border-radius:6px;color:var(--mut);font-size:14px}
+footer{border-top:1px solid var(--line);color:var(--mut);font-size:13px;padding:22px 0 40px;margin-top:40px}
+[data-hu]{display:none}
+html[lang=hu] [data-hu]{display:revert}
+html[lang=hu] [data-en]{display:none}
+@media (max-width:640px){.demo iframe{aspect-ratio:9/14}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <h1>P1 Monitor</h1>
+    <p data-en>A live web display for your smart electricity meter — read locally through a GreenHESS ADA P1 Meter, with optional Fronius inverters. Nine hand-made skins, synthesized sound, no cloud.</p>
+    <p data-hu>Élő webes kijelző az okos villanyórádhoz — helyben olvasva egy GreenHESS ADA P1 Meteren át, opcionálisan Fronius inverterekkel. Kilenc kézzel készített skin, szintetizált hangok, felhő nélkül.</p>
+  </div>
+  <div class="lang"><button data-l="en">English</button><button data-l="hu">Magyar</button></div>
+</header>
+
+<div class="cta">
+  <a class="btn main" href="https://github.com/gali-master/P1-Monitor/releases/latest"><span data-en>⬇ Download</span><span data-hu>⬇ Letöltés</span></a>
+  <a class="btn" href="https://github.com/gali-master/P1-Monitor"><span data-en>GitHub repository</span><span data-hu>GitHub repó</span></a>
+  <a class="btn" id="readme" href="https://github.com/gali-master/P1-Monitor#readme"><span data-en>Full guide</span><span data-hu>Teljes leírás</span></a>
+  <a class="btn spon" href="https://github.com/sponsors/gali-master"><span data-en>❤ Sponsor</span><span data-hu>❤ Támogatás</span></a>
+</div>
+
+<div class="demo">
+  <iframe id="demo" title="P1 Monitor live demo" allow="fullscreen; autoplay" loading="eager"></iframe>
+  <div class="bar">
+    <span class="lbl" data-en>Live demo · skin:</span><span class="lbl" data-hu>Élő demó · skin:</span>
+    <span id="chips"></span>
+    <span class="sp"></span>
+    <a id="full" href="p1monitor.html?demo" target="_blank" rel="noopener"><span data-en>Open full screen ↗</span><span data-hu>Megnyitás teljes ablakban ↗</span></a>
+  </div>
+</div>
+<p class="hint" data-en>Simulated data, running entirely in your browser. A day passes in about four minutes. Click once inside the demo for sound; the red "do not touch" button (bottom left) hides a surprise on every skin.</p>
+<p class="hint" data-hu>Szimulált adatok, teljesen a böngésződben futnak; egy nap kb. négy perc alatt telik el. Kattints egyet a demóba a hanghoz; a bal alsó „ne nyúlj hozzá” gomb minden skinen meglepetést rejt.</p>
+
+<section>
+  <h2 data-en>What it shows</h2><h2 data-hu>Mit mutat</h2>
+  <div class="grid">
+    <div class="card"><b data-en>Live power flow</b><b data-hu>Élő energiafolyam</b>
+      <p data-en>Grid import / export, house consumption and solar production — per inverter, updated every few seconds.</p>
+      <p data-hu>Hálózati vétel / betáp, házfogyasztás és napelemes termelés — inverterenként, pár másodpercenként frissítve.</p></div>
+    <div class="card"><b data-en>Phases and quarter hour</b><b data-hu>Fázisok és negyedóra</b>
+      <p data-en>Voltage, current and power on L1–L3, the projected 15-minute average, tariff and meter totals.</p>
+      <p data-hu>Feszültség, áram és teljesítmény L1–L3-on, a várható negyedórás átlag, tarifa és mérőállások.</p></div>
+    <div class="card"><b data-en>Daily totals and history</b><b data-hu>Napi összesítők, előzmény</b>
+      <p data-en>Today's consumption, production, import and export, plus 6 hours of history as plotters, barographs and bar graphs.</p>
+      <p data-hu>Mai fogyasztás, termelés, vétel és betáp, és 6 óra előzmény szalagíróként, barográfként, oszlopokként.</p></div>
+    <div class="card"><b data-en>Private by design</b><b data-hu>Adatvédelem</b>
+      <p data-en>Everything stays on your network. The reader's cloud username and password are dropped immediately; history lives in RAM only.</p>
+      <p data-hu>Minden a saját hálózatodon marad. Az olvasó felhős felhasználónevét és jelszavát azonnal eldobja; az előzmény csak RAM-ban van.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-en>What you need</h2><h2 data-hu>Mi kell hozzá</h2>
+  <ul class="req" data-en>
+    <li>A <b>GreenHESS ADA P1 Meter</b> on the meter's P1 port, connected to your Wi-Fi (its local JSON API reachable on your network)</li>
+    <li>Optional: <b>Fronius</b> inverter(s) with <i>Solar API</i> enabled</li>
+    <li>An always-on computer on the same network — e.g. a <b>Raspberry Pi</b> — with <b>Python 3.8+</b> (nothing else to install)</li>
+    <li>Any modern browser, desktop or phone</li>
+  </ul>
+  <ul class="req" data-hu>
+    <li><b>GreenHESS ADA P1 Meter</b> a mérő P1 portján, a Wi-Fi-re csatlakoztatva (a helyi JSON felülete elérhető a hálózaton)</li>
+    <li>Opcionálisan <b>Fronius</b> inverter(ek), bekapcsolt <i>Solar API</i>-val</li>
+    <li>Egy folyamatosan működő gép ugyanazon a hálózaton — pl. <b>Raspberry Pi</b> — <b>Python 3.8+</b> verzióval (más nem kell)</li>
+    <li>Bármilyen mai böngésző, gépen vagy telefonon</li>
+  </ul>
+</section>
+
+<section>
+  <h2 data-en>Quick start</h2><h2 data-hu>Gyors indulás</h2>
+<pre>git clone https://github.com/gali-master/P1-Monitor.git
+cd P1-Monitor
+cp config.example.json config.json
+nano config.json          # <span data-en>address of your P1 reader and inverters</span><span data-hu>a P1 olvasó és az inverterek címe</span>
+python3 p1monitor.py      # <span data-en>then open http://&lt;server-ip&gt;:8080/</span><span data-hu>utána: http://&lt;szerver-ip&gt;:8080/</span></pre>
+  <p class="warn" data-en>⚠️ The raw <code>/json</code> answer of the P1 reader contains your cloud username and password — never paste it anywhere public. The <a href="https://github.com/gali-master/P1-Monitor#readme">full guide</a> covers finding the addresses, autostart with systemd and all settings.</p>
+  <p class="warn" data-hu>⚠️ A P1 olvasó nyers <code>/json</code> válasza tartalmazza a felhős felhasználóneved és jelszavad — sehova ne másold be nyilvánosan. A <a href="https://github.com/gali-master/P1-Monitor/blob/main/README.hu.md">teljes leírás</a> mutatja a címek kiderítését, az automatikus indítást systemd-vel és minden beállítást.</p>
+</section>
+
+<footer>
+  <span data-en>MIT licence · Free to use. If you like it, <a href="https://github.com/sponsors/gali-master">sponsor the project</a> ❤</span>
+  <span data-hu>MIT licenc · Szabadon használható. Ha tetszik, <a href="https://github.com/sponsors/gali-master">támogasd a projektet</a> ❤</span>
+  <br><span data-en>GreenHESS, ADA, Fronius and Commodore are trademarks of their respective owners; this project is not affiliated with them.</span>
+  <span data-hu>A GreenHESS, ADA, Fronius és Commodore nevek a tulajdonosaik védjegyei; a projekt nem áll kapcsolatban velük.</span>
+</footer>
+</div>
+
+<script>
+const SKINS = [["nixie", "Nixie", "Nixie"], ["steampunk", "Steampunk", "Steampunk"], ["solari", "Airport board", "Reptéri tábla"], ["analog", "Analog", "Analóg"],
+  ["led", "LED", "LED"], ["chernobyl", "Chernobyl", "Csernobil"], ["c64", "C64", "C64"]];
+let lang = /[?&]lang=hu\b/.test(location.search) ? "hu" : (localStorage.getItem("p1lang") === "hu" ? "hu" : "en");
+let skin = "nixie";
+const frame = document.getElementById("demo"), chips = document.getElementById("chips");
+const url = () => `p1monitor.html?demo&at=11&skin=${skin}&lang=${lang}`;
+function load() { frame.src = url(); document.getElementById("full").href = url(); }
+function render() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.l === lang));
+  chips.innerHTML = SKINS.map(s => `<button class="chip${s[0] === skin ? " on" : ""}" data-s="${s[0]}">${lang === "hu" ? s[2] : s[1]}</button>`).join(" ");
+  document.getElementById("readme").href = lang === "hu" ? "https://github.com/gali-master/P1-Monitor/blob/main/README.hu.md" : "https://github.com/gali-master/P1-Monitor#readme";
+}
+document.querySelector(".lang").addEventListener("click", e => { const b = e.target.closest("button"); if (!b || b.dataset.l === lang) return; lang = b.dataset.l; try { localStorage.setItem("p1lang", lang); } catch (x) {} render(); load(); });
+chips.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; skin = b.dataset.s; render(); load(); });
+render(); load();
+</script>
+</body>
+</html>
