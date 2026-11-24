@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>P1 Monitor – live smart-meter display</title>
-<meta name="description" content="Local live web display for a smart electricity meter (GreenHESS ADA P1) with Fronius inverters. Nine skins, synthesized sound, demo mode, English/Hungarian.">
+<meta name="description" content="Independent, unofficial live web display for P1 smart meters (tested with the GreenHESS ADA P1 Meter) and Fronius inverters. Nine skins, synthesized sound, demo mode, English/Hungarian.">
 <meta property="og:title" content="P1 Monitor">
 <meta property="og:description" content="Live smart-meter display with nine hand-made skins – try the demo in your browser.">
 <meta property="og:image" content="docs/nixie.jpg">
@@ -58,8 +58,8 @@ html[lang=hu] [data-en]{display:none}
 <header>
   <div class="brand">
     <h1>P1 Monitor</h1>
-    <p data-en>A live web display for your smart electricity meter — read locally through a GreenHESS ADA P1 Meter, with optional Fronius inverters. Nine hand-made skins, synthesized sound, no cloud.</p>
-    <p data-hu>Élő webes kijelző az okos villanyórádhoz — helyben olvasva egy GreenHESS ADA P1 Meteren át, opcionálisan Fronius inverterekkel. Kilenc kézzel készített skin, szintetizált hangok, felhő nélkül.</p>
+    <p data-en>An independent live web display for your smart electricity meter — it reads a P1 reader's local interface (tested with the GreenHESS ADA P1 Meter), optionally with Fronius inverters. Nine hand-made skins, synthesized sound, no cloud.</p>
+    <p data-hu>Független, élő webes kijelző az okos villanyórádhoz — egy P1 olvasó helyi felületét olvassa (a GreenHESS ADA P1 Meterrel kipróbálva), opcionálisan Fronius inverterekkel. Kilenc kézzel készített skin, szintetizált hangok, felhő nélkül.</p>
   </div>
   <div class="lang"><button data-l="en">English</button><button data-l="hu">Magyar</button></div>
 </header>
@@ -104,13 +104,13 @@ html[lang=hu] [data-en]{display:none}
 <section>
   <h2 data-en>What you need</h2><h2 data-hu>Mi kell hozzá</h2>
   <ul class="req" data-en>
-    <li>A <b>GreenHESS ADA P1 Meter</b> on the meter's P1 port, connected to your Wi-Fi (its local JSON API reachable on your network)</li>
+    <li>A <b>P1 reader with a local JSON interface</b> (developed and tested with the GreenHESS ADA P1 Meter) on the meter's P1 port, connected to your Wi-Fi (its local JSON API reachable on your network)</li>
     <li>Optional: <b>Fronius</b> inverter(s) with <i>Solar API</i> enabled</li>
     <li>An always-on computer on the same network — e.g. a <b>Raspberry Pi</b> — with <b>Python 3.8+</b> (nothing else to install)</li>
     <li>Any modern browser, desktop or phone</li>
   </ul>
   <ul class="req" data-hu>
-    <li><b>GreenHESS ADA P1 Meter</b> a mérő P1 portján, a Wi-Fi-re csatlakoztatva (a helyi JSON felülete elérhető a hálózaton)</li>
+    <li><b>Helyi JSON felületű P1 olvasó</b> (a GreenHESS ADA P1 Meterrel fejlesztve és kipróbálva) a mérő P1 portján, a Wi-Fi-re csatlakoztatva (a helyi JSON felülete elérhető a hálózaton)</li>
     <li>Opcionálisan <b>Fronius</b> inverter(ek), bekapcsolt <i>Solar API</i>-val</li>
     <li>Egy folyamatosan működő gép ugyanazon a hálózaton — pl. <b>Raspberry Pi</b> — <b>Python 3.8+</b> verzióval (más nem kell)</li>
     <li>Bármilyen mai böngésző, gépen vagy telefonon</li>
@@ -131,8 +131,8 @@ python3 p1monitor.py      # <span data-en>then open http://&lt;server-ip&gt;:808
 <footer>
   <span data-en>MIT licence · Free to use. If you like it, <a href="https://github.com/sponsors/gali-master">sponsor the project</a> ❤</span>
   <span data-hu>MIT licenc · Szabadon használható. Ha tetszik, <a href="https://github.com/sponsors/gali-master">támogasd a projektet</a> ❤</span>
-  <br><span data-en>GreenHESS, ADA, Fronius and Commodore are trademarks of their respective owners; this project is not affiliated with them.</span>
-  <span data-hu>A GreenHESS, ADA, Fronius és Commodore nevek a tulajdonosaik védjegyei; a projekt nem áll kapcsolatban velük.</span>
+  <br><span data-en>P1 Monitor is an independent, unofficial hobby project, not made, endorsed or supported by GreenHESS, Fronius or Commodore. Product names and trademarks belong to their owners and are used only to describe compatibility.</span>
+  <span data-hu>A P1 Monitor független, nem hivatalos hobbiprojekt; nem a GreenHESS, a Fronius vagy a Commodore készítette vagy támogatja. A terméknevek és védjegyek a tulajdonosaikéi, itt csak a kompatibilitás leírására szerepelnek.</span>
 </footer>
 </div>
 

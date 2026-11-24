@@ -4,8 +4,10 @@
 
 ![Nixie skin](docs/nixie.jpg)
 
-A local, live web display for a smart electricity meter read through a
-**GreenHESS ADA P1 Meter**, with optional **Fronius** inverters (Solar API v1).
+A local, live web display for smart electricity meters. It reads the local
+JSON interface of a P1 reader (developed and tested with the GreenHESS ADA P1
+Meter) and, optionally, Fronius inverters through their Solar API v1.
+*An independent, unofficial hobby project — see the [notice](#license) below.*
 One small Python server (standard library only) and one self-contained HTML page
 with nine hand-made skins: nixie tubes, steampunk, airport split-flap board,
 analog switchboard, LED panel, Chernobyl-style control desk, Commodore 64,
@@ -51,7 +53,8 @@ URL options (also work on the server):
 
 ## Requirements
 
-- A **GreenHESS ADA P1 Meter** connected to the meter's P1 port and to your
+- A P1 reader with a local JSON interface — developed and tested with the
+  GreenHESS ADA P1 Meter — connected to the meter's P1 port and to your
   Wi-Fi, with its local JSON API reachable on your network
 - Optional: **Fronius** inverter(s) with *Solar API* enabled
   (inverter web interface → Settings → enable "Solar API" / "Solar API v1")
@@ -191,5 +194,9 @@ button at the top of this page. Thank you!
 
 MIT — see [LICENSE](LICENSE).
 
-GreenHESS, ADA, Fronius and Commodore are trademarks of their respective
-owners. This project is not affiliated with or endorsed by them.
+**Notice:** P1 Monitor is an independent, unofficial hobby project. It is not
+made, affiliated with, endorsed, sponsored or supported by GreenHESS, Fronius,
+Commodore or any other manufacturer named here. All product names and trademarks
+belong to their respective owners and are used only to describe which devices
+this software works with. Please do not contact these manufacturers for support
+with P1 Monitor — open an issue in this repository instead.

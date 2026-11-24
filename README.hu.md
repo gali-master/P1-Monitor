@@ -4,8 +4,10 @@
 
 ![Nixie skin](docs/nixie.jpg)
 
-Helyi, élő webes kijelző okos villanyórához, amelyet egy **GreenHESS ADA P1
-Meter** olvas ki, opcionálisan **Fronius** inverterekkel (Solar API v1).
+Helyi, élő webes kijelző okos villanyórákhoz. Egy P1 olvasó helyi JSON
+felületét olvassa (a GreenHESS ADA P1 Meterrel fejlesztve és kipróbálva), és
+opcionálisan Fronius invertereket a Solar API v1-en keresztül.
+*Független, nem hivatalos hobbiprojekt — lásd a lenti [megjegyzést](#licenc).*
 Egy kis Python szerver (csak beépített modulokkal) és egy önálló HTML oldal
 kilenc kézzel készített kinézettel (skinnel): nixie csövek, steampunk, reptéri
 lapozós tábla, analóg kapcsolószekrény, LED panel, csernobili vezérlőpult,
@@ -53,7 +55,8 @@ Címbe írható opciók (a szerveren is működnek):
 
 ## Mi kell hozzá
 
-- **GreenHESS ADA P1 Meter**, a mérő P1 portjára és a Wi-Fi-re csatlakoztatva,
+- Helyi JSON felülettel rendelkező P1 olvasó — a GreenHESS ADA P1 Meterrel
+  fejlesztve és kipróbálva —, a mérő P1 portjára és a Wi-Fi-re csatlakoztatva,
   a helyi JSON felülete elérhető a hálózaton
 - Opcionálisan **Fronius** inverter(ek), bekapcsolt *Solar API*-val
   (inverter webes felülete → Beállítások → „Solar API” / „Solar API v1”
@@ -195,5 +198,9 @@ oldal tetején lévő ❤ **Sponsor** gombbal. Köszönöm!
 
 MIT — lásd [LICENSE](LICENSE).
 
-A GreenHESS, ADA, Fronius és Commodore nevek a tulajdonosaik védjegyei. Ez a
-projekt nem áll kapcsolatban velük, és nem általuk támogatott.
+**Megjegyzés:** a P1 Monitor független, nem hivatalos hobbiprojekt. Nem a
+GreenHESS, a Fronius, a Commodore vagy más itt említett gyártó készítette, nem
+áll velük kapcsolatban, és nem ők támogatják vagy szponzorálják. A termékneveket
+és védjegyeket a tulajdonosaik birtokolják; itt csak annak leírására szerepelnek,
+hogy a program milyen eszközökkel működik. A P1 Monitorral kapcsolatos
+kérdésekkel ne a gyártókat keresd, hanem nyiss egy „issue”-t ebben a repóban.
