@@ -2988,7 +2988,7 @@ async function pollHist() {
    Bekapcsol, ha a fajlt Pi nelkul nyitjak meg (file://), vagy ?demo van a cimben.
    Valosaghu napot general: 2 inverter (keleti + deli), felhok, haztartasi fogyasztok. */
 /* kezdo skin: ?skin=nev, kulonben a legutobb hasznalt, elso inditaskor a nixie */
-const START_SKIN = () => { const m = /[?&]skin=(\w+)/.exec(location.search); return (m && SK[m[1]]) ? m[1] : (SK[lsGet("p1skin")] ? lsGet("p1skin") : "nixie"); };
+const START_SKIN = () => { const m = /[?&]skin=(\w+)/.exec(location.search); return (m && SK[m[1]]) ? m[1] : (ORDER.includes(lsGet("p1skin")) ? lsGet("p1skin") : "nixie"); };
 const DEMO = location.protocol === "file:" || /[?&]demo\b/.test(location.search);
 const NOWS = () => DEMO ? SIM.t / 1000 : Date.now() / 1000;
 const SIM = {
@@ -4855,7 +4855,8 @@ SK.solari = {
 };
 
 /* ====================== VALTO + FOCIKLUS ====================== */
-const ORDER = ["steampunk", "modern", "solari", "analog", "led", "nixie", "chernobyl", "matrix", "c64"];
+/* menuben megjeleno (kesz) skinek; a "modern" es "matrix" fejlesztes alatt: csak ?skin=modern / ?skin=matrix cimmel nyithato */
+const ORDER = ["nixie", "steampunk", "solari", "analog", "led", "chernobyl", "c64"];
 function setSkin(id) {
   if (!SK[id]) id = "steampunk";
   SND.amb(null);

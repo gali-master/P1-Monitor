@@ -9,10 +9,9 @@ JSON interface of a P1 reader (developed and tested with the GreenHESS ADA P1
 Meter) and, optionally, Fronius inverters through their Solar API v1.
 *An independent, unofficial hobby project — see the [notice](#license) below.*
 One small Python server (standard library only) and one self-contained HTML page
-with nine hand-made skins: nixie tubes, steampunk, airport split-flap board,
-analog switchboard, LED panel, Chernobyl-style control desk, Commodore 64,
-modern and matrix — with synthesized sound effects and a "do not touch" button
-on every skin.
+with seven hand-made skins: nixie tubes, steampunk, airport split-flap board,
+analog switchboard, LED panel, Chernobyl-style control desk and Commodore 64 —
+with synthesized sound effects and a "do not touch" button on every skin.
 
 **▶ [Live demo](https://gali-master.github.io/P1-Monitor/)** (simulated data, runs in your browser) · **⬇ [Download](https://github.com/gali-master/P1-Monitor/releases/latest)** · **❤ [Sponsor](https://github.com/sponsors/gali-master)**
 
@@ -49,7 +48,7 @@ URL options (also work on the server):
 | `?demo` | force demo mode |
 | `?at=13` | demo starts at 13:00 (sunny midday) |
 | `?lang=hu` / `?lang=en` | interface language (remembered by the browser) |
-| `?skin=nixie` | open a given skin (`nixie`, `steampunk`, `solari`, `analog`, `led`, `chernobyl`, `c64`, `modern`, `matrix`) |
+| `?skin=nixie` | open a given skin (`nixie`, `steampunk`, `solari`, `analog`, `led`, `chernobyl`, `c64`) |
 
 ## Requirements
 

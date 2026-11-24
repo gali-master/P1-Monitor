@@ -9,10 +9,10 @@ felületét olvassa (a GreenHESS ADA P1 Meterrel fejlesztve és kipróbálva), �
 opcionálisan Fronius invertereket a Solar API v1-en keresztül.
 *Független, nem hivatalos hobbiprojekt — lásd a lenti [megjegyzést](#licenc).*
 Egy kis Python szerver (csak beépített modulokkal) és egy önálló HTML oldal
-kilenc kézzel készített kinézettel (skinnel): nixie csövek, steampunk, reptéri
-lapozós tábla, analóg kapcsolószekrény, LED panel, csernobili vezérlőpult,
-Commodore 64, modern és mátrix — szintetizált hangeffektekkel és minden skinen
-egy „ne nyúlj hozzá” gombbal.
+hét kézzel készített kinézettel (skinnel): nixie csövek, steampunk, reptéri
+lapozós tábla, analóg kapcsolószekrény, LED panel, csernobili vezérlőpult és
+Commodore 64 — szintetizált hangeffektekkel és minden skinen egy „ne nyúlj
+hozzá” gombbal.
 
 **▶ [Élő demó](https://gali-master.github.io/P1-Monitor/)** (szimulált adatok, a böngésződben fut) · **⬇ [Letöltés](https://github.com/gali-master/P1-Monitor/releases/latest)** · **❤ [Támogatás](https://github.com/sponsors/gali-master)**
 
@@ -51,7 +51,7 @@ Címbe írható opciók (a szerveren is működnek):
 | `?demo` | demó mód kényszerítése |
 | `?at=13` | a demó 13:00-kor indul (napos dél) |
 | `?lang=hu` / `?lang=en` | a felület nyelve (a böngésző megjegyzi) |
-| `?skin=nixie` | adott skin megnyitása (`nixie`, `steampunk`, `solari`, `analog`, `led`, `chernobyl`, `c64`, `modern`, `matrix`) |
+| `?skin=nixie` | adott skin megnyitása (`nixie`, `steampunk`, `solari`, `analog`, `led`, `chernobyl`, `c64`) |
 
 ## Mi kell hozzá
 
