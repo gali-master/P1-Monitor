@@ -1,0 +1,20 @@
+# systemd unit for P1 Monitor - see README ("Autostart")
+# Replace YOUR_USER and /opt/p1monitor with your own values.
+[Unit]
+Description=P1 Monitor (smart meter web display)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+WorkingDirectory=/opt/p1monitor
+ExecStart=/usr/bin/python3 /opt/p1monitor/p1monitor.py
+Restart=on-failure
+RestartSec=10
+Nice=10
+CPUQuota=25%
+MemoryMax=100M
+
+[Install]
+WantedBy=multi-user.target

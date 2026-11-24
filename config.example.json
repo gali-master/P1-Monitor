@@ -1,0 +1,33 @@
+{
+  "_comment": "Copy to config.json and edit. Masold config.json neven, es ird at. See README / Lasd README.",
+
+  "p1_url": "http://192.0.2.10:PORT/json",
+
+  "inverters": [
+    { "name": "Fronius 1", "host": "192.0.2.21" },
+    { "name": "Fronius 2", "host": "192.0.2.22" }
+  ],
+
+  "listen": { "host": "0.0.0.0", "port": 8080 },
+
+  "poll_s": 5,
+  "history_h": 6,
+  "stale_s": 20,
+  "inv_stale_s": 60,
+  "state_file": "p1state.json",
+
+  "ui": {
+    "LANG": "en",
+    "SP_TITLE": "P1 Villamos Mérőmű",
+    "GRID_MAX": 10,
+    "PV_MAX": 10,
+    "INV_MAX": 5,
+    "HOME_MAX": 10,
+    "PHASE_KW": 5,
+    "A_MAX": 32,
+    "QH_MAX": 5,
+    "WHISTLE_KW": 4,
+    "FERRARIS_REV": 375,
+    "REC_KW": 5
+  }
+}

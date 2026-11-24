@@ -1,0 +1,5 @@
+config.json
+p1state.json
+p1state.json.tmp
+__pycache__/
+*.pyc

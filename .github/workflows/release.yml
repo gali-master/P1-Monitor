@@ -1,0 +1,33 @@
+name: Release
+
+# Pushing a version tag (e.g. v1.0.0) builds P1-Monitor-<tag>.zip and publishes a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Package
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          mkdir -p dist/P1-Monitor
+          cp p1monitor.py p1monitor.html config.example.json p1monitor.service README.md README.hu.md LICENSE dist/P1-Monitor/
+          cd dist && zip -r -X "P1-Monitor-${TAG}.zip" P1-Monitor && sha256sum "P1-Monitor-${TAG}.zip" > "P1-Monitor-${TAG}.zip.sha256"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          NOTES="P1 Monitor ${TAG}
+
+          **Install:** download the ZIP, unpack it, then follow README.md (English) / README.hu.md (magyar).
+          **Try it without hardware:** open p1monitor.html in a browser (demo mode), or the live demo: https://gali-master.github.io/P1-Monitor/"
+          gh release create "$TAG" "dist/P1-Monitor-${TAG}.zip" "dist/P1-Monitor-${TAG}.zip.sha256" --title "P1 Monitor ${TAG}" --notes "$NOTES" || \
+          gh release upload "$TAG" "dist/P1-Monitor-${TAG}.zip" "dist/P1-Monitor-${TAG}.zip.sha256" --clobber
