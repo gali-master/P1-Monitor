@@ -188,6 +188,10 @@ HTML csere után elég az oldalt frissíteni.
 | nincs hang | kattints egyet az oldalon; nézd meg a hanggombot és a hangerőt |
 
 
+## Szerző
+
+Készítette: [gali-master](https://github.com/gali-master), Claude-dal (Anthropic) közösen fejlesztve.
+
 ## A projekt támogatása
 
 Ha hasznos neked a P1 Monitor, a fejlesztését a

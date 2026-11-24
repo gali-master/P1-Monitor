@@ -183,6 +183,10 @@ An HTML change only needs a page reload.
 | no sound | click once on the page; check the sound button and the device volume |
 
 
+## Author
+
+Created by [gali-master](https://github.com/gali-master), built together with Claude (Anthropic).
+
 ## Support the project
 
 If P1 Monitor is useful to you, you can support its development through
